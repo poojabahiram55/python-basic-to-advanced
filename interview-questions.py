@@ -205,3 +205,127 @@ a = {'d': 3, 'b': 1, 'c': 2}
 d = {key: a[key] for key in sorted(a)}
 
 print(d)
+
+
+# Find the key having the maximum value in a dictionary.
+
+a = {'d': 3, 'b': 1, 'c': 2}
+
+mkey = max(a, key=a.get)
+
+print(mkey)
+
+# Flatten list
+a = [[2, 3], [4, 5], [6], 7]
+r = []
+for i in a:
+    if isinstance(i, list):
+        r.extend(i)
+    else:
+        r.append(i)
+
+print(r)
+
+# rotate list by K
+a = [1, 2, 3, 4, 5]
+k = 2
+n = len(a)
+def reverse(l, r):
+    while l < r:
+        a[l], a[r] = a[r], a[l]
+        l += 1
+        r -= 1
+
+reverse(0, n - 1)
+reverse(0, k - 1)
+reverse(k, n - 1)
+print(a)
+
+# Implement a stack using a list.
+class Stack:
+    def __init__(self, capacity=5):
+        self.stack = []
+        self.capacity = capacity
+
+    # Push an element onto the stack
+    def push(self, value):
+        if self.is_full():
+            print("Stack Overflow! Stack is full.")
+        else:
+            self.stack.append(value)
+            print(f"{value} pushed into stack.")
+
+    # Remove the top element
+    def pop(self):
+        if self.is_empty():
+            print("Stack Underflow! Stack is empty.")
+            return None
+        return self.stack.pop()
+
+    # View the top element
+    def peek(self):
+        if self.is_empty():
+            print("Stack is empty.")
+            return None
+        return self.stack[-1]
+
+    # Check if the stack is empty
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    # Check if the stack is full
+    def is_full(self):
+        return len(self.stack) == self.capacity
+
+    # Return the current size
+    def size(self):
+        return len(self.stack)
+
+    # Display all elements
+    def display(self):
+        if self.is_empty():
+            print("Stack is empty.")
+        else:
+            print("Stack:", self.stack)
+
+
+# Driver Code
+stack = Stack(capacity=5)
+
+stack.push(10)
+stack.push(20)
+stack.push(30)
+stack.push(40)
+stack.push(50)
+stack.push(60)      # Overflow
+
+print()
+
+stack.display()
+print("Top element:", stack.peek())
+print("Stack size:", stack.size())
+print("Is Empty:", stack.is_empty())
+print("Is Full:", stack.is_full())
+
+print("\nPopped:", stack.pop())
+print("Popped:", stack.pop())
+
+print()
+
+stack.display()
+print("Top element:", stack.peek())
+print("Stack size:", stack.size())
+print("Is Empty:", stack.is_empty())
+print("Is Full:", stack.is_full())
+
+# Write a function with positional and keyword arguments.
+
+def student(name, age, course='Python'):
+    print(name)
+    print(age)
+    print(course)
+
+# positional argument
+student('John', 30)
+# keyword argument
+student(name='John', age=30, course='Java')
